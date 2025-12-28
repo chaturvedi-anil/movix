@@ -1,11 +1,12 @@
 import app from "./app";
-import dotenv from "dotenv";
 import { logger } from "./utils/logger";
-dotenv.config();
+import { checkDatabaseConnection } from "./configs/database";
+import { ENV } from "./configs/env";
 
 const startServer = async () => {
-  app.listen(5000, () => {
-    logger.info(`Express server is running on port ${5000}`);
+  await checkDatabaseConnection();
+  app.listen(ENV.PORT, () => {
+    logger.info(`Express server is running on port ${ENV.PORT}`);
   });
 };
 
