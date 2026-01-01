@@ -34,12 +34,12 @@ const options: any = {
 };
 
 /** Exported Prisma instance */
-export const prisma = new PrismaClient(options);
+export const prismaClient = new PrismaClient(options);
 
 /** Utility to check DB connection at startup */
 export async function checkDatabaseConnection(): Promise<void> {
   try {
-    await prisma.$connect();
+    await prismaClient.$connect();
     logger.info("Database connected successfully");
   } catch (error) {
     logger.error("Database connection failed", error);
