@@ -56,3 +56,9 @@ export const loginUser = async (data: LoginInput) => {
 
   return { user: publicUser, token };
 };
+
+export const getUser = async (email: string) => {
+  const user = await authRepository.findUserByEmail(email);
+
+  return { user };
+};

@@ -2,10 +2,10 @@ import jwt from "jsonwebtoken";
 import { ENV } from "../configs/env";
 import AppError from "./appError";
 
-export interface JwtPayload {
+export type JwtPayload = {
   id: string;
   email: string;
-}
+};
 
 export const signToken = (payload: JwtPayload) => {
   if (!ENV.JWT_SECRET) {
@@ -33,7 +33,7 @@ export const verifyToken = (token: string) => {
   }
 
   try {
-    return jwt.verify(token, ENV.JWT_SECRET);
+    return jwt.verify(token, ENV.JWT_SECRET) as JwtPayload;
   } catch (error) {
     throw new AppError(401, "Invalid or expired token");
   }
