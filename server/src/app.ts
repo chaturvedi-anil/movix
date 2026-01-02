@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/api/v1/", indexRouter);
+app.use("/api/v1", indexRouter);
 
 app.use(ErrorMiddleware);
 
