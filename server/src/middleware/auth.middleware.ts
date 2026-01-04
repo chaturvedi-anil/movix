@@ -8,7 +8,7 @@ export const isAuthenticated = CatchAsyncRequest(
     const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-      throw new AppError(401, "Unauthorized");
+      return next(new AppError(401, "Unauthorized"));
     }
 
     const decoded = verifyToken(token);
