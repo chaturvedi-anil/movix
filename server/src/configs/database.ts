@@ -13,7 +13,7 @@ const adapter = new PrismaPg({ connectionString: ENV.DATABASE_URL });
 
 export const prismaClient = new PrismaClient({
   adapter,
-  log: ["query", "info", "warn", "error"],
+  log: ["info", "warn", "error"],
 });
 
 export async function checkDatabaseConnection() {

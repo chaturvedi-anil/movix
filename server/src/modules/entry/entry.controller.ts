@@ -3,6 +3,7 @@ import { CatchAsyncRequest } from "../../utils/catchAsync";
 import * as entryService from "./entry.service";
 import { EntryInput } from "./entry.schema";
 import { logger } from "../../utils/logger";
+import { serialize } from "../../utils/serialize";
 
 export const createEntry = CatchAsyncRequest(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -20,8 +21,8 @@ export const createEntry = CatchAsyncRequest(
 
 export const getEntries = CatchAsyncRequest(
   async (req: Request, res: Response, next: NextFunction) => {
-    const result = await entryService.getEntries();
-
+    const result = serialize(await entryService.getEntries());
+    logger.info("controller result: ", result[0]);
     res.status(201).json({
       success: true,
       result,
