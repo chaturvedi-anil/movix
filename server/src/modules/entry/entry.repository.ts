@@ -63,6 +63,10 @@ export const findById = (id: string) => {
   return prismaClient.entry.findUnique({ where: { id: id } });
 };
 
-export const findByIdAndDelete = (id: string) => {
-  return prismaClient.entry.delete({ where: { id: id } });
+export const findEntries = () => {
+  return prismaClient.entry.findMany();
+};
+
+export const findByIdAndDelete = (id: string, ownerId: string) => {
+  return prismaClient.entry.delete({ where: { id: id, ownerId: ownerId } });
 };
