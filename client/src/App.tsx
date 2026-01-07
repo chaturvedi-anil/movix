@@ -1,7 +1,8 @@
 import React from "react";
+import AppProviders from "./app/providers";
 
 const App = () => {
-  return <div>App</div>;
+  return <AppProviders></AppProviders>;
 };
 
 export default App;
