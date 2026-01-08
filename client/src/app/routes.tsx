@@ -6,7 +6,7 @@ import AuthLayout from "../layouts/AuthLayout.tsx";
 import RequireAuth from "./RequireAuth.tsx";
 
 const Home = lazy(() => import("../features/movies/MovieList"));
-const MovieList = lazy(() => import("../features/movies/MovieList.tsx"));
+const MovieDetail = lazy(() => import("../features/movies/MovieDetail.tsx"));
 const NotFound = lazy(() => import("../components/NotFound.tsx"));
 const Login = lazy(() => import("../features/auth/Login.tsx"));
 const Register = lazy(() => import("../features/auth/Register.tsx"));
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       { index: true, element: withSuspense(<Home />) },
       {
         path: "/movies/:id",
-        element: withSuspense(<MovieList />),
+        element: withSuspense(<MovieDetail />),
       },
       { path: "/search", element: withSuspense(<Home />) },
       { path: "*", element: withSuspense(<NotFound />) },
@@ -40,6 +40,6 @@ export const router = createBrowserRouter([
   // Protected Routes
   {
     path: "/profile",
-    // element: <RequireAuth>{withSuspense(<Profile />)}</RequireAuth>,
+    element: <RequireAuth>{withSuspense(<Profile />)}</RequireAuth>,
   },
 ]);
